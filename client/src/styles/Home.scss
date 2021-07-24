@@ -1,0 +1,79 @@
+@import "./utils/config";
+
+.authCard {
+	width: $sm-card-width;
+	margin-top: 25vh;
+	border-radius: 5px;
+	background-color: $primary-col;
+
+	// Header
+	.authCardHeaderWrap {
+		margin-bottom: 2rem;
+		padding: 1rem 0;
+		text-align: center;
+		border-radius: 5px;
+		background-color: $secondary-col;
+
+		.authCardHeaderTitle {
+			font-size: $h2-size + 0.5rem;
+			font-weight: $font-lite;
+			color: $light-col;
+		}
+	}
+
+	.authCardInputWrap {
+		width: 95%;
+		margin: 0 auto;
+	}
+
+	// Input
+	.authCardInputItem {
+		margin-bottom: 1rem;
+		display: flex;
+		flex-direction: column;
+
+		.authCardLabel {
+			margin-bottom: 0.5rem;
+			font-size: $p-size;
+			color: $light-col;
+		}
+
+		.authCardInput {
+			padding: 0.25rem 0;
+			font-size: $p-size + 0.25rem;
+			border: 1px solid #ccc;
+			outline: none;
+		}
+
+		.authCardSelect {
+			padding: 0.5rem 0;
+			font-size: $p-size + 0.25rem;
+			border: 1px solid #ccc;
+			outline: none;
+		}
+	}
+
+	.authCardSubmitBtn {
+		display: block;
+		width: 100%;
+		margin: 2rem 0;
+		padding: 0.5rem 0;
+		font-size: $p-size;
+		color: $dark-col;
+		text-align: center;
+		background-color: #f4f4f4;
+		border: 1px solid #ccc;
+		outline: none;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.9;
+		}
+	}
+}
+
+@media screen and (max-width: $media-break-sm) {
+	.authCard {
+		width: $full-width;
+	}
+}

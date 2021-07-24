@@ -1,0 +1,125 @@
+@import "utils/config";
+
+.chatCard {
+	background-color: $primary-col;
+	width: $lg-card-width;
+	margin-top: 15vh;
+	border-radius: 5px;
+}
+
+// Header
+.chatCardHeaderWrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	border-radius: 5px;
+	color: $light-col;
+	background-color: $secondary-col;
+
+	.chatCardHeaderTitle {
+		font-size: $h2-size;
+		font-weight: $font-lite;
+	}
+
+	.chatCardHeaderRoom {
+		font-size: $h3-size;
+		font-weight: $font-lite;
+	}
+
+	.chatCardHeaderLink {
+		padding: 0.5rem 1rem;
+		font-size: $link-size;
+		background-color: #f0f0f0;
+		color: $dark-col;
+	}
+}
+
+// Main
+.chatCardMainWrap {
+	display: flex;
+
+	// Info
+	.chatCardInfoWrap {
+		flex: 1;
+		padding: 2rem 0;
+
+		.chatCardInfoInnerWrap {
+			padding: 0 1rem;
+		}
+
+		.chatCardInfoUsers {
+			margin-bottom: 0.5rem;
+			font-size: $h4-size;
+			color: $light-col;
+		}
+
+		.chatCardInfoItem {
+			margin-bottom: 0.5rem;
+			font-size: $p-size;
+			color: $light-col;
+		}
+	}
+
+	// Messages
+	.chatCardMessageWrap {
+		flex: 3;
+		padding: 2rem 0;
+		background-color: #fff;
+
+		.chatCardMessageList {
+			margin: 0 2rem;
+		}
+
+		.chatCardMessageItem {
+			margin-bottom: 1rem;
+			padding: 1rem;
+			font-size: $p-size;
+			color: $dark-col;
+			background-color: #eee;
+		}
+
+		.chatCardMessageItemHeaderWrap {
+			display: flex;
+			margin-bottom: 0.5rem;
+		}
+
+		.chatCardMessageItemHeaderUsername {
+			margin-right: 1rem;
+			color: $primary-col;
+			font-size: $p-size - 0.25rem;
+		}
+
+		.chatCardMessageItemHeaderTime {
+			font-size: $p-size - 0.25rem;
+		}
+	}
+}
+
+// Input
+.chatCardInputWrap {
+	background-color: $secondary-col;
+	text-align: center;
+
+	.chatCardInputForm {
+		width: 100%;
+		display: flex;
+		padding: 1rem;
+
+		.chatCardInput {
+			flex: 5;
+			padding: 0.25rem 0;
+			font-size: $p-size + 0.25rem;
+			border: 1px solid #ccc;
+			outline: none;
+		}
+
+		.chatCardSubmitBtn {
+			flex: 1;
+			border: 1px solid #ccc;
+			border-left: none;
+			outline: none;
+			cursor: pointer;
+		}
+	}
+}

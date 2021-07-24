@@ -1,0 +1,87 @@
+// ================ Variables ================
+
+// ---------- Layout ----------
+$section-width: 1300px;
+$full-width: 100%;
+
+$lg-card-width: 900px;
+$sm-card-width: 425px;
+
+$media-break-lg: 1300px;
+$media-break-md: 768px;
+$media-break-sm: 425px;
+
+// ---------- Typography ----------
+$h1-size: 5rem;
+$h2-size: 2.75rem;
+$h3-size: 2rem;
+$h4-size: 1.75rem;
+
+$p-size: 1.5rem;
+$link-size: 1.5rem;
+
+$font-lite: 400;
+$font-semi-bold: 600;
+$font-bold: 700;
+
+$default-font-family: Arial, Helvetica, sans-serif;
+
+// ---------- Colors ----------
+$light-col: #fff;
+$dark-col: #333;
+$primary-col: rgb(35, 150, 220);
+$secondary-col: rgb(30, 120, 180);
+
+// =============== Mixins ===============
+@mixin section-center {
+	width: $section-width;
+	margin: 0 auto;
+}
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// =============== Utility Classes ===============
+.sectionCenter {
+	width: $section-width;
+	margin: 0 auto;
+}
+
+.flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// =============== Resets ===============
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: $default-font-family;
+	overflow-x: hidden;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+@media screen and (max-width: $media-break-lg) {
+	.sectionCenter {
+		width: 95%;
+	}
+}
