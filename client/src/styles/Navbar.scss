@@ -1,0 +1,25 @@
+@import "./utils/config";
+
+.nav {
+	width: 100vw;
+	padding: 1rem 0;
+	color: #fff;
+	background-color: #333;
+
+	.nav-inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.nav-title {
+		font-size: $h2-size;
+		font-weight: $font-lite;
+		color: $light-col;
+	}
+
+	.nav-user-link {
+		font-size: 1.5rem;
+		color: $light-col;
+	}
+}

@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { UsersContext } from "../context/UsersContext";
-import "../styles/Home.scss";
 
 const Home = () => {
 	const { setCurrentUser, setCurrentRoom } = useContext(UsersContext);
@@ -33,6 +32,7 @@ const Home = () => {
 								type="text"
 								className="authCardInput"
 								onChange={(e) => setCurrentUser(e.target.value)}
+								placeholder="Enter username..."
 								required
 							/>
 						</div>
