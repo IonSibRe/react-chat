@@ -18,7 +18,7 @@
 	background-color: $secondary-col;
 
 	.chatCardHeaderTitle {
-		font-size: $h2-size;
+		font-size: $h2-size + 0.5rem;
 		font-weight: $font-lite;
 	}
 
@@ -38,6 +38,7 @@
 // Main
 .chatCardMainWrap {
 	display: flex;
+	min-height: 50vh;
 
 	// Info
 	.chatCardInfoWrap {
@@ -50,22 +51,30 @@
 
 		.chatCardInfoUsers {
 			margin-bottom: 0.5rem;
-			font-size: $h4-size;
+			font-size: $h4-size + 0.25rem;
+			font-weight: $font-lite;
 			color: $light-col;
 		}
 
 		.chatCardInfoItem {
 			margin-bottom: 0.5rem;
+			margin-left: 2rem;
 			font-size: $p-size;
 			color: $light-col;
+		}
+
+		.chatCardInfoUserIcon {
+			margin-right: 0.5rem;
 		}
 	}
 
 	// Messages
 	.chatCardMessageWrap {
 		flex: 3;
+		max-height: 50vh;
 		padding: 2rem 0;
 		background-color: #fff;
+		overflow-y: scroll;
 
 		.chatCardMessageList {
 			margin: 0 2rem;

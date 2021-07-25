@@ -1,14 +1,21 @@
 import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { UsersContext } from "../context/UsersContext";
 import "../styles/Home.scss";
 
 const Home = () => {
 	const { setCurrentUser, setCurrentRoom } = useContext(UsersContext);
+	const history = useHistory();
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+
+		history.push("/chat");
+	};
 
 	useEffect(() => {
 		setCurrentRoom("JavaScript");
-	}, []);
+	}, [setCurrentRoom]);
 
 	return (
 		<section className="sectionCenter flexCenter">
@@ -17,7 +24,7 @@ const Home = () => {
 					<h2 className="authCardHeaderTitle">Next Chat</h2>
 				</div>
 				<div className="authCardInputWrap">
-					<form className="authCardForm">
+					<form className="authCardForm" onSubmit={submitHandler}>
 						<div className="authCardInputItem">
 							<label htmlFor="username" className="authCardLabel">
 								Username
@@ -57,9 +64,9 @@ const Home = () => {
 								</option>
 							</select>
 						</div>
-						<Link to="chat" className="authCardSubmitBtn">
+						<button type="submit" className="authCardSubmitBtn">
 							Join Chat
-						</Link>
+						</button>
 					</form>
 				</div>
 			</div>

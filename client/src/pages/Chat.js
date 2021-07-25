@@ -25,6 +25,8 @@ const Chat = () => {
 		sendMsgInputRef.current.focus();
 	};
 
+	const leaveRoom = () => socketRef.current.disconnect();
+
 	useEffect(() => {
 		socketRef.current = io.connect("http://localhost:8000");
 
@@ -45,7 +47,7 @@ const Chat = () => {
 				msg,
 			]);
 		});
-	}, []);
+	}, [currentRoom, currentUser]);
 
 	return (
 		<section className="sectionCenter flexCenter">
@@ -53,7 +55,11 @@ const Chat = () => {
 				<div className="chatCardHeaderWrap">
 					<h2 className="chatCardHeaderTitle">Next Chat</h2>
 					<h3 className="chatCardHeaderRoom">{room}</h3>
-					<Link to="/" className="chatCardHeaderLink">
+					<Link
+						to="/"
+						className="chatCardHeaderLink"
+						onClick={leaveRoom}
+					>
 						Leave Room
 					</Link>
 				</div>
@@ -61,9 +67,7 @@ const Chat = () => {
 				<div className="chatCardMainWrap">
 					<div className="chatCardInfoWrap">
 						<div className="chatCardInfoInnerWrap">
-							<h4 className="chatCardInfoUsers">
-								Current Users:
-							</h4>
+							<h4 className="chatCardInfoUsers">Online Users:</h4>
 							<ul className="chatCardInfoList">
 								{users
 									? users.map((user) => {
@@ -72,6 +76,7 @@ const Chat = () => {
 													className="chatCardInfoItem"
 													key={user.id}
 												>
+													<i class="fas fa-user chatCardInfoUserIcon"></i>{" "}
 													{user.username}
 												</li>
 											);
