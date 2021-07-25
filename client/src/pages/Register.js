@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { UsersContext } from "../context/UsersContext";
 
 const Register = () => {
+	const { register } = useContext(UsersContext);
+	const [userInfo, setUserInfo] = useState({
+		email: "",
+		username: "",
+		password: "",
+	});
+
+	// TODO refactor email, username, password to single object
+	const submitHandler = (e) => {
+		e.preventDefault();
+
+		register(userInfo);
+		setUserInfo({});
+	};
+
 	return (
 		<section className="sectionCenter flexCenter">
 			<div className="authCard">
@@ -9,7 +25,7 @@ const Register = () => {
 					<h2 className="authCardHeaderTitle">Register</h2>
 				</div>
 				<div className="authCardInputWrap">
-					<form className="authCardForm">
+					<form className="authCardForm" onSubmit={submitHandler}>
 						<div className="authCardInputItem">
 							<label htmlFor="email" className="authCardLabel">
 								Email
@@ -18,7 +34,14 @@ const Register = () => {
 								type="email"
 								className="authCardInput"
 								placeholder="Enter email..."
+								value={userInfo.email ?? ""}
 								required
+								onChange={(e) =>
+									setUserInfo({
+										...userInfo,
+										email: e.target.value,
+									})
+								}
 							/>
 						</div>
 						<div className="authCardInputItem">
@@ -29,7 +52,14 @@ const Register = () => {
 								type="text"
 								className="authCardInput"
 								placeholder="Enter username..."
+								value={userInfo.username ?? ""}
 								required
+								onChange={(e) =>
+									setUserInfo({
+										...userInfo,
+										username: e.target.value,
+									})
+								}
 							/>
 						</div>
 						<div className="authCardInputItem">
@@ -40,7 +70,14 @@ const Register = () => {
 								type="password"
 								className="authCardInput"
 								placeholder="Enter password..."
+								value={userInfo.password ?? ""}
 								required
+								onChange={(e) =>
+									setUserInfo({
+										...userInfo,
+										password: e.target.value,
+									})
+								}
 							/>
 						</div>
 

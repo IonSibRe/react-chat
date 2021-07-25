@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { UsersContext } from "../context/UsersContext";
 import "../styles/Auth.scss";
 
 const Login = () => {
+	const { login } = useContext(UsersContext);
+	const [userInfo, setUserInfo] = useState({
+		email: "",
+		password: "",
+	});
+
+	// TODO refactor email, username, password to single object
+	const submitHandler = (e) => {
+		e.preventDefault();
+
+		login(userInfo);
+		setUserInfo({});
+	};
+
 	return (
 		<section className="sectionCenter flexCenter">
 			<div className="authCard">
@@ -10,7 +25,7 @@ const Login = () => {
 					<h2 className="authCardHeaderTitle">Sign In</h2>
 				</div>
 				<div className="authCardInputWrap">
-					<form className="authCardForm">
+					<form className="authCardForm" onSubmit={submitHandler}>
 						<div className="authCardInputItem">
 							<label htmlFor="email" className="authCardLabel">
 								Email
@@ -19,7 +34,14 @@ const Login = () => {
 								type="email"
 								className="authCardInput"
 								placeholder="Enter email..."
+								value={userInfo.email ?? ""}
 								required
+								onChange={(e) =>
+									setUserInfo({
+										...userInfo,
+										email: e.target.value,
+									})
+								}
 							/>
 						</div>
 						<div className="authCardInputItem">
@@ -30,7 +52,14 @@ const Login = () => {
 								type="password"
 								className="authCardInput"
 								placeholder="Enter password..."
+								value={userInfo.password ?? ""}
 								required
+								onChange={(e) =>
+									setUserInfo({
+										...userInfo,
+										password: e.target.value,
+									})
+								}
 							/>
 						</div>
 

@@ -14,6 +14,8 @@ router.post("/register", async (req, res) => {
 
 	if (error) return res.status(400).send(errMessage);
 
+	console.log(error);
+
 	// Check if user already is registered
 	const user = await User.findOne({ email: req.body.email });
 	if (user) return res.status(400).send("Email already exists");
@@ -57,7 +59,7 @@ router.post("/login", async (req, res) => {
 	// Generate JWT
 	const token = jwt.sign({ id: user._id }, process.env.TOKEN_SECRET);
 
-	res.header("auth-token", token).send(token);
+	res.header("auth-token", token).json({ token });
 });
 
 module.exports = router;
