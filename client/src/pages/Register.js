@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { UsersContext } from "../context/UsersContext";
 
 const Register = () => {
-	const { register } = useContext(UsersContext);
+	const { register, loggedIn } = useContext(UsersContext);
 	const [userInfo, setUserInfo] = useState({
 		email: "",
 		username: "",
@@ -17,6 +17,8 @@ const Register = () => {
 		register(userInfo);
 		setUserInfo({});
 	};
+
+	if (loggedIn) return <Redirect to="/" />;
 
 	return (
 		<section className="sectionCenter flexCenter">

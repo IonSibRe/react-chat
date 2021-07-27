@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { UsersContext } from "../context/UsersContext";
 import "../styles/Auth.scss";
 
 const Login = () => {
-	const { login } = useContext(UsersContext);
+	const { login, loggedIn } = useContext(UsersContext);
 	const [userInfo, setUserInfo] = useState({
 		email: "",
 		password: "",
@@ -17,6 +17,8 @@ const Login = () => {
 		login(userInfo);
 		setUserInfo({});
 	};
+
+	if (loggedIn) return <Redirect to="/" />;
 
 	return (
 		<section className="sectionCenter flexCenter">

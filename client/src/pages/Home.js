@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { UsersContext } from "../context/UsersContext";
 
 const Home = () => {
-	const { setCurrentUser, setCurrentRoom } = useContext(UsersContext);
+	const { setRoom } = useContext(UsersContext);
 	const history = useHistory();
 
 	const submitHandler = (e) => {
@@ -13,8 +13,8 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		setCurrentRoom("JavaScript");
-	}, [setCurrentRoom]);
+		setRoom("JavaScript");
+	}, [setRoom]);
 
 	return (
 		<section className="sectionCenter flexCenter">
@@ -25,24 +25,12 @@ const Home = () => {
 				<div className="authCardInputWrap">
 					<form className="authCardForm" onSubmit={submitHandler}>
 						<div className="authCardInputItem">
-							<label htmlFor="username" className="authCardLabel">
-								Username
-							</label>
-							<input
-								type="text"
-								className="authCardInput"
-								onChange={(e) => setCurrentUser(e.target.value)}
-								placeholder="Enter username..."
-								required
-							/>
-						</div>
-						<div className="authCardInputItem">
 							<label htmlFor="room" className="authCardLabel">
 								Room
 							</label>
 							<select
 								className="authCardSelect"
-								onChange={(e) => setCurrentRoom(e.target.value)}
+								onChange={(e) => setRoom(e.target.value)}
 							>
 								<option
 									value="JavaScript"

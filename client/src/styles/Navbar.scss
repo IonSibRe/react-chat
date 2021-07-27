@@ -18,6 +18,25 @@
 		color: $light-col;
 	}
 
+	.nav-username {
+		font-size: $h4-size;
+		font-weight: $font-lite;
+		color: $light-col;
+	}
+
+	.nav-logout-btn {
+		font-size: $h4-size;
+		color: $light-col;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+
+		&:hover {
+			color: $primary-col;
+		}
+	}
+
 	.nav-user-link {
 		font-size: 1.5rem;
 		color: $light-col;

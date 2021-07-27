@@ -6,10 +6,9 @@ import "../styles/Chat.scss";
 
 const Chat = () => {
 	const [message, setMessage] = useState("");
-	const { currentUser, currentRoom } = useContext(UsersContext);
+	const { user, room } = useContext(UsersContext);
 
 	const [users, setUsers] = useState([]);
-	const [room, setRoom] = useState("");
 
 	const [responseMessages, setResponseMessages] = useState([]);
 	const socketRef = useRef(null);
@@ -30,14 +29,13 @@ const Chat = () => {
 	useEffect(() => {
 		socketRef.current = io.connect("http://localhost:8000");
 
-		const tempUser = { username: currentUser, room: currentRoom };
+		const tempUser = { username: user.username, room };
 
 		// Join Room
 		socketRef.current.emit("joinRoom", tempUser);
 
 		// Get Room and users
-		socketRef.current.on("roomUsers", ({ room, users }) => {
-			setRoom(room);
+		socketRef.current.on("roomUsers", ({ users }) => {
 			setUsers(users);
 		});
 
@@ -47,7 +45,7 @@ const Chat = () => {
 				msg,
 			]);
 		});
-	}, [currentRoom, currentUser]);
+	}, [user, room]);
 
 	return (
 		<section className="sectionCenter flexCenter">
@@ -76,7 +74,7 @@ const Chat = () => {
 													className="chatCardInfoItem"
 													key={user.id}
 												>
-													<i class="fas fa-user chatCardInfoUserIcon"></i>{" "}
+													<i className="fas fa-user chatCardInfoUserIcon"></i>{" "}
 													{user.username}
 												</li>
 											);
