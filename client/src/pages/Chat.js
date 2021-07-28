@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import io from "socket.io-client";
 import { UsersContext } from "../context/UsersContext";
 import "../styles/Chat.scss";
@@ -30,6 +30,9 @@ const Chat = () => {
 		socketRef.current = io.connect("http://localhost:8000");
 
 		const tempUser = { username: user.username, room };
+		console.log(tempUser);
+
+		if (!user.username || !room) return;
 
 		// Join Room
 		socketRef.current.emit("joinRoom", tempUser);
@@ -45,7 +48,11 @@ const Chat = () => {
 				msg,
 			]);
 		});
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [user, room]);
+
+	if (!localStorage.getItem("current-room")) return <Redirect to="/" />;
 
 	return (
 		<section className="sectionCenter flexCenter">

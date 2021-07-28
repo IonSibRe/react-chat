@@ -29,8 +29,9 @@ $default-font-family: Arial, Helvetica, sans-serif;
 // ---------- Colors ----------
 $light-col: #fff;
 $dark-col: #333;
-$primary-col: rgb(35, 150, 220);
-$secondary-col: rgb(30, 120, 180);
+$primary-col: #2396dc;
+$secondary-col: #1e78b4;
+$danger-col: #dc3545;
 
 // =============== Mixins ===============
 @mixin section-center {

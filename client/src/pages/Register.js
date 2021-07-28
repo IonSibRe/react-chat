@@ -1,22 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { UsersContext } from "../context/UsersContext";
 
 const Register = () => {
-	const { register, loggedIn } = useContext(UsersContext);
+	const { register, loggedIn, error, setError } = useContext(UsersContext);
 	const [userInfo, setUserInfo] = useState({
 		email: "",
 		username: "",
 		password: "",
 	});
 
-	// TODO refactor email, username, password to single object
 	const submitHandler = (e) => {
 		e.preventDefault();
 
 		register(userInfo);
-		setUserInfo({});
+		if (loggedIn) setUserInfo({});
 	};
+
+	useEffect(() => {
+		const resetError = setTimeout(() => setError(""), [3000]);
+		return () => clearTimeout(resetError);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [error]);
 
 	if (loggedIn) return <Redirect to="/" />;
 
@@ -26,6 +31,11 @@ const Register = () => {
 				<div className="authCardHeaderWrap">
 					<h2 className="authCardHeaderTitle">Register</h2>
 				</div>
+				{error && (
+					<div className="authCardErrorWrap">
+						<h4 className="authCardErrorText">{error}</h4>
+					</div>
+				)}
 				<div className="authCardInputWrap">
 					<form className="authCardForm" onSubmit={submitHandler}>
 						<div className="authCardInputItem">

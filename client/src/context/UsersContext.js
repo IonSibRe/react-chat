@@ -4,7 +4,9 @@ const UsersContext = React.createContext();
 const url = "http://localhost:8000/api/v1";
 
 const UsersProvider = ({ children }) => {
-	const [room, setRoom] = useState("");
+	const [room, setRoom] = useState(
+		JSON.parse(localStorage.getItem("current-room")) || ""
+	);
 	const [user, setUser] = useState({});
 	const [loggedIn, setLoggedIn] = useState(
 		JSON.parse(localStorage.getItem("auth")) ? true : false
@@ -60,7 +62,11 @@ const UsersProvider = ({ children }) => {
 	const logout = () => {
 		setUser({});
 		setLoggedIn(false);
+
 		localStorage.removeItem("auth");
+		localStorage.removeItem("current-room");
+
+		window.location.reload();
 	};
 
 	const getCurrentUser = async (id, token) => {
@@ -92,6 +98,7 @@ const UsersProvider = ({ children }) => {
 				user,
 				loggedIn,
 				error,
+				setError,
 				register,
 				login,
 				logout,

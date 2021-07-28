@@ -14,7 +14,9 @@ const Home = () => {
 
 	useEffect(() => {
 		setRoom("JavaScript");
-	}, [setRoom]);
+		localStorage.setItem("current-room", JSON.stringify("JavaScript"));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<section className="sectionCenter flexCenter">
@@ -30,7 +32,13 @@ const Home = () => {
 							</label>
 							<select
 								className="authCardSelect"
-								onChange={(e) => setRoom(e.target.value)}
+								onChange={(e) => {
+									setRoom(e.target.value);
+									localStorage.setItem(
+										"current-room",
+										JSON.stringify(e.target.value)
+									);
+								}}
 							>
 								<option
 									value="JavaScript"

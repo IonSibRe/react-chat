@@ -20,9 +20,11 @@ function App() {
 					exact
 					path="/"
 				/>
-				<Route path="/chat">
-					<Chat />
-				</Route>
+				<PrivateRoute
+					component={Chat}
+					loggedIn={loggedIn}
+					path="/chat"
+				></PrivateRoute>
 				<Route path="/login">
 					<Login />
 				</Route>
